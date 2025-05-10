@@ -713,6 +713,7 @@
                   </arguments>
                   <waitForInterrupt>false</waitForInterrupt>
                   <waitAfterLaunch>${waittimeForServerStart}</waitAfterLaunch>
+                  <healthCheckUrl>http://127.0.0.1:${webgoat.port}${webgoat.context}/login</healthCheckUrl>
                 </configuration>
               </execution>
               <execution>
