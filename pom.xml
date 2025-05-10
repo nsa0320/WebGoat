@@ -98,7 +98,7 @@
     <waittimeForServerStart>120</waittimeForServerStart>
     <webdriver.version>6.0.1</webdriver.version>
     <webgoat.context>/WebGoat</webgoat.context>
-    <webgoat.port>8081</webgoat.port>
+    <webgoat.port>8080</webgoat.port>
     <webgoat.sslenabled>false</webgoat.sslenabled>
     <webjars-locator-core.version>0.59</webjars-locator-core.version>
     <webwolf.context>/WebWolf</webwolf.context>
@@ -713,7 +713,6 @@
                   </arguments>
                   <waitForInterrupt>false</waitForInterrupt>
                   <waitAfterLaunch>${waittimeForServerStart}</waitAfterLaunch>
-                  <healthCheckUrl>http://127.0.0.1:${webgoat.port}${webgoat.context}/login</healthCheckUrl>
                 </configuration>
               </execution>
               <execution>
