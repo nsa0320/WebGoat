@@ -9,11 +9,11 @@ pipeline {
         IMAGE_TAG = 'latest'
     }
     stages {
-        stage('Checkout Github') {
+        /*stage('Checkout Github') {
             steps {
-                git branch: 'main', credentialsId: 'nsa0320', url: 'https://github.com/nsa0320/WebGoat.git'
+                #git branch: 'main', credentialsId: 'nsa0320', url: 'https://github.com/nsa0320/WebGoat.git'
             }
-        }
+        } */
         stage('Install node dependencies') {
             steps {
                 sh 'npm install'
