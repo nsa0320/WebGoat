@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        maven 'maven3.9'  
+    }
     environment {
         AWS_REGION = 'ap-northeast-2'
         ECR_REPO = '341162387145.dkr.ecr.ap-northeast-2.amazonaws.com/nsa'
@@ -45,4 +48,5 @@ pipeline {
         }
     }
 }
+
 
