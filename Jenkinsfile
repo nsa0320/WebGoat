@@ -1,27 +1,19 @@
 pipeline {
     agent any
-    tools {
-        nodejs 'nodejs'  
-    }
     environment {
         AWS_REGION = 'ap-northeast-2'
         ECR_REPO = '341162387145.dkr.ecr.ap-northeast-2.amazonaws.com/nsa'
         IMAGE_TAG = 'latest'
     }
     stages {
-        /*stage('Checkout Github') {
+        stage('Checkout Code') {
             steps {
-                #git branch: 'main', credentialsId: 'nsa0320', url: 'https://github.com/nsa0320/WebGoat.git'
-            }
-        } */
-        stage('Install node dependencies') {
-            steps {
-                sh 'npm install'
+                checkout scm
             }
         }
-        stage('Test Code') {
+        stage('Build with Gradle') {
             steps {
-                sh 'npm test || echo "Tests failed, but continuing..."'
+                sh './gradlew build'
             }
         }
         stage('Build Docker Image') {
@@ -46,10 +38,10 @@ pipeline {
     }
     post {
         success {
-            echo ' Docker image built and pushed to ECR successfully!'
+            echo '✅ Docker image built and pushed to ECR successfully!'
         }
         failure {
-            echo ' Pipeline failed. Check logs.'
+            echo '❌ Pipeline failed. Check logs.'
         }
     }
 }
