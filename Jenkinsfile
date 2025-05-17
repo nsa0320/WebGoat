@@ -11,9 +11,9 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Build with Gradle') {
+        stage('Build with Maven') {
             steps {
-                sh './gradlew build'
+                sh 'mvn clean package -DskipTests'
             }
         }
         stage('Build Docker Image') {
@@ -45,3 +45,4 @@ pipeline {
         }
     }
 }
+
